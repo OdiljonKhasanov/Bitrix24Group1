@@ -8,7 +8,7 @@ Feature: Task
 
 
 
-  Scenario: Verify that user can create new task by clicking on a task in activity stream
+  Scenario: Verify that user cagitn create new task by clicking on a task in activity stream
     Then user navigates to "Fleet" and "Vehicles"
     And user verifies that "Cars" page name is displayed
     And user verifies that default page number is 1
