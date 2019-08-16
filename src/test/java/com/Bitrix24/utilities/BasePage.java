@@ -15,12 +15,12 @@ public abstract class BasePage {
     private static final Logger logger = LogManager.getLogger();
 
 
-    @FindBy(css = "div[class='loader-mask shown']")
-    @CacheLookup
-    protected WebElement loaderMask;
-
-    @FindBy(css = "h1[class='oro-subtitle']")
-    protected WebElement pageSubTitle;
+//    @FindBy(css = "div[class='loader-mask shown']")
+//    @CacheLookup
+//    protected WebElement loaderMask;
+//
+//    @FindBy(css = "h1[class='oro-subtitle']")
+//    protected WebElement pageSubTitle;
 
 
     public BasePage() {
@@ -31,12 +31,12 @@ public abstract class BasePage {
     /**
      * @return page name, for example: Dashboard
      */
-    public String getPageSubTitle() {
-        //ant time we are verifying page name, or page subtitle, loader mask appears
-        waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitForStaleElement(pageSubTitle);
-        return pageSubTitle.getText();
-    }
+//    public String getPageSubTitle() {
+//        //ant time we are verifying page name, or page subtitle, loader mask appears
+//        waitUntilLoaderScreenDisappear();
+//        BrowserUtils.waitForStaleElement(pageSubTitle);
+//        return pageSubTitle.getText();
+//    }
 
 
     /**
@@ -44,15 +44,15 @@ public abstract class BasePage {
      * NoSuchElementException will be handled  bu try/catch block
      * Thus, we can continue in any case.
      */
-    public void waitUntilLoaderScreenDisappear() {
-        try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-            wait.until(ExpectedConditions.invisibilityOf(loaderMask));
-        } catch (Exception e) {
-            logger.error("Loader mask doesn't present.");
-            System.out.println("Loader mask doesn't present.");
-        }
-    }
+//    public void waitUntilLoaderScreenDisappear() {
+//        try {
+//            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+//            wait.until(ExpectedConditions.invisibilityOf(loaderMask));
+//        } catch (Exception e) {
+//            logger.error("Loader mask doesn't present.");
+//            System.out.println("Loader mask doesn't present.");
+//        }
+//    }
 
     /**
      * This method will navigate user to the specific module in vytrack application.
@@ -66,24 +66,24 @@ public abstract class BasePage {
         String tabLocator =  "[title='" + tab + "']";
         String moduleLocator =module;
         try {
-            BrowserUtils.waitForClickablility(By.xpath(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-            WebElement tabElement = Driver.getDriver().findElement(By.xpath(tabLocator));
+            BrowserUtils.waitForClickablility(By.cssSelector(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            WebElement tabElement = Driver.getDriver().findElement(By.cssSelector(tabLocator));
             new Actions(Driver.getDriver()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
         } catch (Exception e) {
             logger.error("Failed to click on :: "+tab);
             logger.error(e);
-            BrowserUtils.clickWithWait(By.xpath(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.clickWithWait(By.cssSelector(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
         try {
-            BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-            BrowserUtils.waitForVisibility(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-            BrowserUtils.scrollToElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
-            Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+            BrowserUtils.waitForPresenceOfElement(By.linkText(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.waitForVisibility(By.linkText(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.scrollToElement(Driver.getDriver().findElement(By.linkText(moduleLocator)));
+            Driver.getDriver().findElement(By.linkText(moduleLocator)).click();
         } catch (Exception e) {
             logger.error("Failed to click on :: "+module);
             logger.error(e);
-            BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.linkText(moduleLocator)));
+            BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.linkText(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
     }
 
