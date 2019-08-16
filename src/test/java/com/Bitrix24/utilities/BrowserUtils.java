@@ -118,7 +118,7 @@ public class BrowserUtils {
         while (counter < attempts) {
             try {
                 //selenium must look for element again
-                clickWithJS(com.vytrack.utilities.Driver.getDriver().findElement(by));
+                clickWithJS(com.Bitrix24.utilities.Driver.getDriver().findElement(by));
                 //if click is successful - then break
                 break;
             } catch (WebDriverException e) {
@@ -138,7 +138,7 @@ public class BrowserUtils {
      * switches to new window by the exact title
      */
     public static void switchToWindow(String targetTitle) {
-        String origin = com.vytrack.utilities.Driver.getDriver().getWindowHandle();
+        String origin = com.Bitrix24.utilities.Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(handle);
             if (Driver.getDriver().getTitle().equals(targetTitle)) {
