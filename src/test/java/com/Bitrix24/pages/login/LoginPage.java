@@ -30,5 +30,29 @@ public class LoginPage {
         loginButtonElement.click();
     }
 
+    public void goToLandingPage(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("url" + ConfigurationReader.getProperty("environment")));
+
+    }
+
+    public void login(String role){
+        String username = "";
+        String password = "";
+        if(role.equalsIgnoreCase("helpdesk")){
+            username = ConfigurationReader.getProperty("helpdeskusername");
+            password = ConfigurationReader.getProperty("helpdeskpassword");
+        }else if( role.equalsIgnoreCase("marketing")){
+            username = ConfigurationReader.getProperty("marketingusername");
+            password = ConfigurationReader.getProperty("marketingpassword");
+        }else if(role.equalsIgnoreCase("hr")){
+            username = ConfigurationReader.getProperty("hrusername");
+            password = ConfigurationReader.getProperty("hrpassword");
+        }
+
+        userNameElement.sendKeys(username);
+        passwordElement.sendKeys(password);
+        loginButtonElement.click();
+
+    }
 
 }

@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
        tags = {"@createtask"},
 
 
-        features = {"src/test/resouces/features" //to specify where are the features
+        features = {"src/test/resources/features" //to specify where are the features
         },
         //feature contains scenarios
         //every scenario is like a test

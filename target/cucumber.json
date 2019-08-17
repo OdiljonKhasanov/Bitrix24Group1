@@ -1,0 +1,91 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "user is on the landing page",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "user logs in as a \"helpdesk\"",
+            "match": {},
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "Verify that user should able to create new task by clicking on task in activity stream",
+        "description": "",
+        "id": "as-a-user-i-should-be-able-to-create-a-task-from-activity-stream.;verify-that-user-should-able-to-create-new-task-by-clicking-on-task-in-activity-stream",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 12,
+            "name": "user navigates to \"Task\"",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 13,
+            "name": "user should type \"Meeting rooms\" inside things to do field",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 14,
+            "name": "user should send image from the path \"\"",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@createtask"
+          }
+        ]
+      }
+    ],
+    "name": "As a user I should be able to create a task from activity stream.",
+    "description": "",
+    "id": "as-a-user-i-should-be-able-to-create-a-task-from-activity-stream.",
+    "keyword": "Feature",
+    "uri": "src\\test\\resources\\features\\ActivityStream\\Tasks\\Task.feature",
+    "tags": [
+      {
+        "name": "@createtask",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
